@@ -1,0 +1,31 @@
+{
+  "name": "toastier",
+  "version": "1.0.0",
+  "description": "AngularJS service for building configurable toast notifications.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JSRobertOuimet/toastier.git"
+  },
+  "keywords": [
+    "angularjs",
+    "toast",
+    "notification"
+  ],
+  "author": "Jean-Simon Robert Ouimet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JSRobertOuimet/toastier/issues"
+  },
+  "homepage": "https://github.com/JSRobertOuimet/toastier#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-if": "^2.0.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-useref": "^3.1.3",
+    "run-sequence": "^2.2.0"
+  }
+}

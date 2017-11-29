@@ -1,0 +1,149 @@
+/*==============================
+/* Styles Configuration
+/*==============================
+
+/* Positioning */
+@toastOffset: 100px;
+@toastZIndex: 9999;
+
+/* Padding */
+@toastPadding: 10px 15px;
+
+/* Border radius */
+@toastBorderRadius: 30px;
+
+/* Text color */
+@toastTextColor: white;
+
+/* Font size */
+@toastFontSize: 16px;
+
+/* Text shadow */
+@toastTextShadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+
+/* Labelling colours */
+@info: #0E3A90;
+@success: #00857C;
+@warning: #D88D00;
+@alert: #D5000B;
+
+/* Toasts background colour */
+@toastInfoBgColor: linear-gradient(90deg, @info 0%, lighten(@info, 15%) 100%);
+@toastSuccessBgColor: linear-gradient(90deg, @success 0%, lighten(@success, 10%) 100%);
+@toastWarningBgColor: linear-gradient(90deg, @warning 0%, lighten(@warning, 10%) 100%);
+@toastAlertBgColor: linear-gradient(90deg, @alert 0%, lighten(@alert, 10%) 100%);
+
+
+/*==============================
+/* Styles Definition
+/*==============================
+
+/* Common definitions */
+.t6r {
+	position: absolute;
+	z-index: @toastZIndex;
+	padding: @toastPadding;
+	border-radius: @toastBorderRadius;
+	font-size: @toastFontSize;
+	color: @toastTextColor;
+	text-shadow: @toastTextShadow;
+	cursor: default;
+}
+
+/* Offsets */
+.xCentered() {
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.yCentered() {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.t6r-top {
+	top: @toastOffset;
+	.xCentered;
+}
+
+.t6r-right {
+	right: @toastOffset;
+	.yCentered;
+}
+
+.t6r-bottom {
+	bottom: @toastOffset;
+	.xCentered;
+}
+
+.t6r-left {
+	left: @toastOffset;
+	.yCentered;
+}
+
+.t6r-topLeft {
+	top: @toastOffset;
+	left: @toastOffset;
+}
+
+.t6r-topRight {
+	top: @toastOffset;
+	right: @toastOffset;
+}
+
+.t6r-bottomLeft {
+	bottom: @toastOffset;
+	left: @toastOffset;
+}
+
+.t6r-bottomRight {
+	bottom: @toastOffset;
+	right: @toastOffset;
+}
+
+/* Labelling */
+.t6r-info { background: @toastInfoBgColor; }
+.t6r-success { background: @toastSuccessBgColor; }
+.t6r-warning { background: @toastWarningBgColor; }
+.t6r-alert {background: @toastAlertBgColor; }
+
+/* Animation */
+.t6r-fadeIn {
+	animation: fadeIn 0.5s forwards;
+}
+
+.t6r-fadeOut {
+	animation: fadeOut 0.2s forwards;
+}
+
+.t6r-fromTop {
+	animation:
+		fadeIn 0.5s forwards,
+		fromTop 0.5s forwards;
+}
+
+.t6r-fromBottom {
+	animation:
+		fadeIn 0.5s forwards,
+		fromBottom 0.5s forwards;
+}
+
+@keyframes fromBottom {
+	0% { margin-bottom: 0; }
+	100% { margin-bottom: @toastOffset; }
+}
+
+@keyframes fromTop {
+	0% { margin-top: 0; }
+	100% { margin-top: @toastOffset; }
+}
+
+@keyframes fadeIn {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+	0% { opacity: 1; }
+	100% { opacity: 0 }
+}
