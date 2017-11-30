@@ -32,9 +32,9 @@ Then, use the `$toaster` service in your controller like so:
 
 ```javascript
 angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
-	$scope.action = function() {
-		$toaster.show({
-			message: "My toast message."
+  $scope.action = function() {
+    $toaster.show({
+      message: "My toast message."
 		});
 	};
 });
@@ -44,9 +44,9 @@ Toastier also supports Pascal Precht&#8217;s [angular-translate](https://angular
 
 ```javascript
 angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
-	$scope.action = function() {
-		$toaster.show({
-			messageKey: "My_Localized_String"
+  $scope.action = function() {
+    $toaster.show({
+      messageKey: "My_Localized_String"
 		});
 	};
 });
