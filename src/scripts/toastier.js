@@ -11,7 +11,7 @@ angular.module("toastier")
 				position: "@",
 				duration: "@"
 			},
-			template: "<div class=\"t6r t6r-fadeIn {{label}} {{position}}\">{{message}}</div>",
+			template: "<div role=\"alert\" class=\"t6r t6r-fadeIn {{label}} {{position}}\">{{message}}</div>",
 			replace: true,
 
 			compile: function(tElement, tAttrs) {
