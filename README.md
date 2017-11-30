@@ -18,25 +18,25 @@ To use Toastier, simply add it as a dependency to your application:
 angular.module("app", [toastier]);
 ```
 
-Then, inject the `$toaster` service to any controller that requires a toast notification. The `show` method accept a `config` object in which you can define your toast message:
+Then, inject the `$toastier` service to any controller that requires a toast notification. The `show` method accept a `config` object in which you can define your toast message:
 
 ```javascript
-angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
+angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
   $scope.action = function() {
     // action to be performed...
-    $toaster.show({
+    $toastier.show({
       message: "My toast message."
     });
   };
 }]);
 ```
 
-Toastier supports Pascal Precht&#8217;s <a href="https://angular-translate.github.io/" target="_blank">angular-translate</a>, so you can define a `messageKey` instead:
+Toastier also supports Pascal Precht&#8217;s <a href="https://angular-translate.github.io/" target="_blank">angular-translate</a>, so you can define a `messageKey` instead:
 
 ```javascript
-angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
+angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
   $scope.action = function() {
-    $toaster.show({
+    $toastier.show({
       messageKey: "My_Localized_String"
     });
   };
@@ -44,6 +44,13 @@ angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
 ```
 
 Toastier will return an error if you don&#8217;t define a toast `message` or `messageKey`. If you define both, only `messageKey` will be considered.
+
+### $toastier.show(config)
+
+#### config
+##### Type: Object [mandatory]
+
+###### `message` / `messageKey`
 
 Furthermore, Toastier provides three configurable properties:
 
