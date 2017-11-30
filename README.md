@@ -1,6 +1,6 @@
 # Toastier
 
-Toastier provides configurable toast notification for your AngularJS application.
+Toastier provides configurable toast notifications for your AngularJS application.
 
 ## Installation
 
@@ -18,7 +18,7 @@ To use Toastier, simply add it as a dependency to your application:
 angular.module("app", [toastier]);
 ```
 
-Then, inject the `$toastier` service to any controller that requires a toast notification. The `show` method accept a `config` object in which you can define your toast message.
+Then, inject the `$toastier` service to any controller that requires a toast notification. The `show` method accept a `config` object in which you can define your toast `message`, `label`, `position` and `duration`.
 
 ### $toastier.show(config)
 
@@ -40,6 +40,8 @@ angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
 
 `message` / `messageKey` [mandatory]  
 Type: String
+
+If you define both `message` and `messageKey`, only `messageKey` will be considered.
 
 ```javascript
 angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
@@ -63,8 +65,6 @@ angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
   };
 }]);
 ```
-
-Toastier will return an error if you don&#8217;t define a toast `message` or `messageKey`. If you define both, only `messageKey` will be considered.
 
 `label` [optional]  
 Type: String  
@@ -92,13 +92,13 @@ Toastier accepts eight `position` values:
 - `"left"`
 - `"topLeft"`
 
-These values take into account the SASS variable `$toastOffset`, which defines a "buffer" from the edge of the window. Feel free to override it.
+These values take into account the SASS variable `$toastOffset`, which sets a "buffer" from the edge of the window. Feel free to override it.
 
 `duration` [optional]  
 Type: Number  
 Default: `2000` (milliseconds)
 
-How long the toast notification will appear on screen before fading out and disappear.
+`duration` defines how long the toast notification will appear on screen before fading out and disappear.
 
 ## License
 
