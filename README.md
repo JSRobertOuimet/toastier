@@ -49,14 +49,34 @@ angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
 
 Type: Object [mandatory]
 
-`message` / `messageKey`
+`message` / `messageKey` [mandatory]
+
+Type: String
+
 Toastier will return an error if you don&#8217;t define a toast `message` or `messageKey`. If you define both, only `messageKey` will be considered.
 
-Furthermore, Toastier provides three configurable properties:
+`label` [optional]
 
-1. `label`: "info", "success", "warning", "alert"
+Type: String
+Default: "info"
+
+Toastier accepts four `label` values:  "info", "success", "warning", "alert". Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the color value for the related SASS variables: $info, $success, $warning and $alert.
+
+`position` [optional]
+
+Type: String
+Default: "bottom"
+
+Toastier accepts four `label` values:  "info", "success", "warning", "alert". Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the color value for the related SASS variables: $info, $success, $warning and $alert.
+
+`position` [optional]
+
+Type: Number
+Default: 2000
+
+Toastier accepts four `label` values:  "info", "success", "warning", "alert". Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the color value for the related SASS variables: $info, $success, $warning and $alert.
+
 2. `position`: "top", "topRight", "right", "bottomRight", "bottom", "bottomLeft", "left", "topLeft"
-3. `duration`: number of milliseconds (default: 2000)
 
 ## Versioning
 
