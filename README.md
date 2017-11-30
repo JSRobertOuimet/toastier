@@ -22,8 +22,7 @@ Then, inject the `$toastier` service to any controller that requires a toast not
 
 ### $toastier.show(config)
 
-#### config  
-Type: Object [mandatory]
+`config` is a mandatory object that accepts four parameters:
 
 `message` / `messageKey` [mandatory]  
 Type: String
