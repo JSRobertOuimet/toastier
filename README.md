@@ -24,6 +24,20 @@ Then, inject the `$toastier` service to any controller that requires a toast not
 
 `config` is a mandatory object that accepts four parameters:
 
+```javascript
+angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
+  $scope.action = function() {
+    // action to be performed...
+    $toastier.show({
+      message: "My toast message.",
+      label: "warning",
+      position: "bottomRight",
+      duration: 3000
+    });
+  };
+}]);
+```
+
 `message` / `messageKey` [mandatory]  
 Type: String
 
@@ -52,9 +66,11 @@ angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
 
 Toastier will return an error if you don&#8217;t define a toast `message` or `messageKey`. If you define both, only `messageKey` will be considered.
 
+---
+
 `label` [optional]  
 Type: String  
-Default: "info"
+Default: `"info"`
 
 Toastier accepts four `label` values:
 - `"info"`
@@ -64,9 +80,11 @@ Toastier accepts four `label` values:
 
 Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the pre-defined SASS variables: `$info`, `$success`, `$warning` and `$alert`.
 
+---
+
 `position` [optional]  
 Type: String  
-Default: "bottom"
+Default: `"bottom"`
 
 Toastier accepts eight `position` values:
 - `"top"`
@@ -80,15 +98,13 @@ Toastier accepts eight `position` values:
 
 These values take into account the SASS variable `$toastOffset`, which defines a "buffer" from the edge of the window. Feel free to override it.
 
+---
+
 `duration` [optional]  
 Type: Number  
-Default: 2000
+Default: `2000` (milliseconds)
 
-
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+How long the toast notification will appear on screen before fading out and disappear.
 
 ## License
 
