@@ -71,7 +71,7 @@ Toastier accepts four `label` values:  "info", "success", "warning", "alert". Ea
 
 `position` [optional]
 
-Type: Number
+Type: Number  
 Default: 2000
 
 Toastier accepts four `label` values:  "info", "success", "warning", "alert". Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the color value for the related SASS variables: $info, $success, $warning and $alert.
