@@ -30,7 +30,7 @@ angular.module("app", [toastier]);
 
 Then, use the `$toaster` service in your controller like so:
 
-```
+```javascript
 angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
 	$scope.action = function() {
 		$toaster.show({
@@ -42,7 +42,7 @@ angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
 
 Toastier also supports Pascal Precht&#8217;s [angular-translate](https://angular-translate.github.io/), so you can define a `messageKey` instead:
 
-```
+```javascript
 angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
 	$scope.action = function() {
 		$toaster.show({
