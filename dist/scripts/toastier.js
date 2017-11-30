@@ -1,4 +1,4 @@
-angular.module("toastier", []);
+angular.module("toastier", ["pascalprecht.translate"]);
 
 angular.module("toastier")
 
@@ -53,7 +53,7 @@ angular.module("toastier")
 		};
 	}])
 
-	.factory("$toastier", ["$compile", "$rootScope", function($compile, $rootScope) {
+	.factory("$toastier", ["$compile", "$rootScope", "$translate", function($compile, $rootScope, $translate) {
 		var  markup, $toaster;
 
 		$toaster = {
@@ -72,7 +72,7 @@ angular.module("toastier")
 				duration: 2000
 			};
 
-			if(!config || config.message === undefined || config.message === "") {
+			if(!config || config.messageKey === undefined && config.message === undefined || config.messageKey === "" && config.message === "") {
 				throw new Error("$toastError: Message must be defined.");
 			};
 
@@ -83,6 +83,14 @@ angular.module("toastier")
 					config[prop] = config[prop] || defaultConfig[prop];
 				};
 			};
+
+			if(config.messageKey) {
+				config.message = $translate.instant(config.messageKey);
+			}
+
+			if(config.messageKey && config.message) {
+				config.message = $translate.instant(config.messageKey);
+			}
 
 			markup = "<toast message='{0}' label='{1}' position='{2}' duration='{3}'></toast>"
 			markup = markup
