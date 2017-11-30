@@ -35,8 +35,8 @@ angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
   $scope.action = function() {
     $toaster.show({
       message: "My toast message."
-		});
-	};
+    });
+  };
 });
 ```
 
@@ -47,8 +47,8 @@ angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
   $scope.action = function() {
     $toaster.show({
       messageKey: "My_Localized_String"
-		});
-	};
+    });
+  };
 });
 ```
 
