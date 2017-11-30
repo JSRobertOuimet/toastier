@@ -49,6 +49,7 @@ angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
 ##### Type: Object [mandatory]
 
 `message` / `messageKey`
+
 Toastier will return an error if you don&#8217;t define a toast `message` or `messageKey`. If you define both, only `messageKey` will be considered.
 
 Furthermore, Toastier provides three configurable properties:
