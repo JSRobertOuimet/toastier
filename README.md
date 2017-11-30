@@ -38,7 +38,7 @@ angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
 }]);
 ```
 
-`message` / `messageKey` [mandatory]  
+#### `message` / `messageKey` [mandatory]  
 Type: String
 
 ```javascript
@@ -66,9 +66,7 @@ angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
 
 Toastier will return an error if you don&#8217;t define a toast `message` or `messageKey`. If you define both, only `messageKey` will be considered.
 
----
-
-`label` [optional]  
+#### `label` [optional]  
 Type: String  
 Default: `"info"`
 
@@ -80,9 +78,7 @@ Toastier accepts four `label` values:
 
 Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the pre-defined SASS variables: `$info`, `$success`, `$warning` and `$alert`.
 
----
-
-`position` [optional]  
+#### `position` [optional]  
 Type: String  
 Default: `"bottom"`
 
@@ -98,9 +94,7 @@ Toastier accepts eight `position` values:
 
 These values take into account the SASS variable `$toastOffset`, which defines a "buffer" from the edge of the window. Feel free to override it.
 
----
-
-`duration` [optional]  
+#### `duration` [optional]  
 Type: Number  
 Default: `2000` (milliseconds)
 
