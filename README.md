@@ -4,17 +4,7 @@ Toastier provides configurable toast notification for your AngularJS application
 
 ## Installation
 
-In ordre to install Toastier, make sure you have Node and npm on your machine:
-
-```
-node --version
-```
-
-```
-npm --version
-```
-
-Than, simply install Toastier:
+In order to install Toastier, make sure you have installed Node and npm on your machine.
 
 ```
 npm install toastier
@@ -22,17 +12,18 @@ npm install toastier
 
 ## Usage
 
-To use Toastier, simply add it to your dependencies:
+To use Toastier, simply add it as a dependency to your application:
 
 ```
 angular.module("app", [toastier]);
 ```
 
-Then, use the `$toaster` service in your controller like so:
+Then, inject the `$toaster` service to any controller that requires a toast notification. The `show` method accept a `config` object in which you can define your toast message:
 
 ```javascript
 angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
   $scope.action = function() {
+    // action to be performed...
     $toaster.show({
       message: "My toast message."
     });
@@ -40,7 +31,7 @@ angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
 }]);
 ```
 
-Toastier also supports Pascal Precht&#8217;s [angular-translate](https://angular-translate.github.io/), so you can define a `messageKey` instead:
+Toastier supports Pascal Precht&#8217;s <a href="https://angular-translate.github.io/" target="_blank">angular-translate</a>, so you can define a `messageKey` instead:
 
 ```javascript
 angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
@@ -52,7 +43,9 @@ angular.module("mainCtrl", ["$scope", "$toaster", function($scope, $toaster) {
 }]);
 ```
 
-Toastier will return an error if you don&#8217;t provide a `message` or `messageKey`. If you provide both, only `messageKey` will be considered. Furthermore, Toastier provides three configurable properties:
+Toastier will return an error if you don&#8217;t define a toast `message` or `messageKey`. If you define both, only `messageKey` will be considered.
+
+Furthermore, Toastier provides three configurable properties:
 
 1. `label`: "info", "success", "warning", "alert"
 2. `position`: "top", "topRight", "right", "bottomRight", "bottom", "bottomLeft", "left", "topLeft"
