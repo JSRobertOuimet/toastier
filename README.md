@@ -18,7 +18,15 @@ To use Toastier, simply add it as a dependency to your application:
 angular.module("app", [toastier]);
 ```
 
-Then, inject the `$toastier` service to any controller that requires a toast notification. The `show` method accept a `config` object in which you can define your toast message:
+Then, inject the `$toastier` service to any controller that requires a toast notification. The `show` method accept a `config` object in which you can define your toast message.
+
+### $toastier.show(config)
+
+#### config  
+Type: Object [mandatory]
+
+`message` / `messageKey` [mandatory]  
+Type: String
 
 ```javascript
 angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
@@ -43,34 +51,21 @@ angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
 }]);
 ```
 
-### $toastier.show(config)
-
-#### config
-
-Type: Object [mandatory]
-
-`message` / `messageKey` [mandatory]
-
-Type: String
-
 Toastier will return an error if you don&#8217;t define a toast `message` or `messageKey`. If you define both, only `messageKey` will be considered.
 
-`label` [optional]
-
-Type: String
+`label` [optional]  
+Type: String  
 Default: "info"
 
 Toastier accepts four `label` values:  "info", "success", "warning", "alert". Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the color value for the related SASS variables: $info, $success, $warning and $alert.
 
-`position` [optional]
-
-Type: String
+`position` [optional]  
+Type: String  
 Default: "bottom"
 
 Toastier accepts four `label` values:  "info", "success", "warning", "alert". Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the color value for the related SASS variables: $info, $success, $warning and $alert.
 
-`position` [optional]
-
+`position` [optional]  
 Type: Number  
 Default: 2000
 
