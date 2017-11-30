@@ -46,7 +46,7 @@ angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
 ### $toastier.show(config)
 
 #### config
-#### Type: Object [mandatory]
+Type: Object [mandatory]
 
 `message` / `messageKey`
 
