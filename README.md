@@ -15,7 +15,7 @@ npm install toastier
 To use Toastier, simply add it as a dependency to your application:
 
 ```
-angular.module("app", [toastier]);
+angular.module("app", ["toastier"]);
 ```
 
 Then, inject the `$toastier` service to any controller that requires a toast notification. The `show` method accept a `config` object in which you can define your toast `message`, `label`, `position` and `duration`.
