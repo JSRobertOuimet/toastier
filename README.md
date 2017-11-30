@@ -56,13 +56,29 @@ Toastier will return an error if you don&#8217;t define a toast `message` or `me
 Type: String  
 Default: "info"
 
-Toastier accepts four `label` values:  "info", "success", "warning", "alert". Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the color value for the related SASS variables: $info, $success, $warning and $alert.
+Toastier accepts four `label` values:
+- `"info"`
+- `"success"`
+- `"warning"`
+- `"alert"`
+
+Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the pre-defined SASS variables: `$info`, `$success`, `$warning` and `$alert`.
 
 `position` [optional]  
 Type: String  
 Default: "bottom"
 
-Toastier accepts eight `position` values:  `"top"`, `"topRight"`, `"right"`, `"bottomRight"`, `"bottom"`, `"bottomLeft"`, `"left"`, `"topLeft"`.
+Toastier accepts eight `position` values:
+- `"top"`
+- `"topRight"`
+- `"right"`
+- `"bottomRight"`
+- `"bottom"`
+- `"bottomLeft"`
+- `"left"`
+- `"topLeft"`
+
+These values take into account the SASS variable `$toastOffset`, which defines a "buffer" from the edge of the window. Feel free to override it.
 
 `duration` [optional]  
 Type: Number  
