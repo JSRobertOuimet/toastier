@@ -4,7 +4,7 @@ angular.module("app")
 			$toastier.show({
 				message: "This is an info message.",
 				label: "info",
-				position: "bottom",
+				position: "top",
 				duration: 3000
 			});
 		};

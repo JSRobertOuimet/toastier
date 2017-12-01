@@ -1,107 +1,115 @@
 angular.module("toastier", ["pascalprecht.translate"]);
 
 angular.module("toastier")
+  .directive("toast", ["$timeout", 
+    function($timeout) {
+      return {
+        restrict: "E",
+        scope: {
+          message: "@",
+          label: "@",
+          position: "@",
+          duration: "@"
+        },
+        template: "<div role='alert' class='t6r t6r-fade-in {{label}} {{position}}'>{{message}}</div>",
+        replace: true,
+        compile: function(tElement, tAttrs) {
+          return {
+            pre: function(scope, iElement, iAttrs) {
+              scope.message = iAttrs.message;
+              scope.label = iAttrs.label;
+              scope.position = iAttrs.position;
+              scope.duration = iAttrs.duration;
 
-	.directive("toast", ["$timeout", function($timeout) {
-		return {
-			restrict: "E",
-			scope: {
-				message: "@",
-				label: "@",
-				position: "@",
-				duration: "@"
-			},
-			template: "<div role=\"alert\" class=\"t6r t6r-fadeIn {{label}} {{position}}\">{{message}}</div>",
-			replace: true,
+              angular.element(document.body).append(iElement);
+            },
+            post: function(scope, iElement, iAttrs) {
+              var fadeOut, duration;
 
-			compile: function(tElement, tAttrs) {
+              // Fade out and destroy toast
+              toastDuration = parseInt(scope.duration);
+              fadeOut, duration = 500;
 
-				return {
+              $timeout(fadeOut, toastDuration).then(function() {
+                return $timeout(destroy, fadeOut, duration);
+              });
 
-					pre: function(scope, iElement, iAttrs) {
-						scope.message = iAttrs.message;
-						scope.label = iAttrs.label;
-						scope.position = iAttrs.position;
-						scope.duration = iAttrs.duration;
+              function fadeOut() {
+                iElement.addClass("t6r-fade-out");
+              }
 
-						angular.element(document.body).append(iElement);
-					},
+              function destroy() {
+                iElement.remove();
+              }
+            }
+          };
+        }
+      };
+    }
+  ])
+  .factory("$toastier", ["$compile", "$rootScope", "$translate", 
+    function($compile, $rootScope, $translate) {
+      var $toaster;
 
-					post: function(scope, iElement, iAttrs) {
-						var fadeOutDuration;
+      $toaster = {
+        show: show
+      };
 
-						// Fade out and destroy toast
-						toastDuration = parseInt(scope.duration);
-						fadeOutDuration = 500;
+      return $toaster;
 
-						$timeout(fadeOut, toastDuration).then(function() {
-							return $timeout(destroy, fadeOutDuration);
-						});
+      function show(config) {
+        var errorState, $toasterMarkup;
 
-						function fadeOut() {
-							iElement.addClass("t6r-fadeOut");
-						}
+        errorState = (!config || 
+          (config.messageKey === undefined && config.message === undefined) || 
+          (config.messageKey === "" && config.message === ""));
 
-						function destroy() {
-							iElement.remove();
-						}
-					}
+        if(errorState) {
+          throw new Error("$toastError: Message must be defined.");
+        };
 
-				};
+        $toasterMarkup = generateMarkup(config);
+        angular.element(document.body).append($toasterMarkup);
 
-			}
-		};
-	}])
 
-	.factory("$toastier", ["$compile", "$rootScope", "$translate", function($compile, $rootScope, $translate) {
-		var  markup, $toaster;
+        function generateMarkup(config){
+          var markupTemplate, toastierConfig, $newScope;
 
-		$toaster = {
-			show: show
-		};
+          markupTemplate = "<toast message='{message}' label='{label}' position='{position}' duration='{duration}'></toast>";
 
-		return $toaster;
+          toastierConfig = populateConfiguration(config);
 
-		function show(config) {
-			var defaultConfig, markup, $toaster;
+          markupTemplate = markupTemplate
+            .replace("{message}", toastierConfig.message)
+            .replace("{label}", "t6r-" + toastierConfig.label)
+            .replace("{position}", "t6r-" + toastierConfig.position)
+            .replace("{duration}", toastierConfig.duration);
 
-			// Configure toast
-			defaultConfig = {
-				label: "info",
-				position: "bottom",
-				duration: 2000
-			};
+          // Create and append toast to body
+          $newScope = $rootScope.$new();
 
-			if(!config || config.messageKey === undefined && config.message === undefined || config.messageKey === "" && config.message === "") {
-				throw new Error("$toastError: Message must be defined.");
-			};
+          return $compile(markupTemplate)($newScope);
 
-			if(config === undefined) {
-				config = defaultConfig;
-			} else {
-				for(var prop in defaultConfig) {
-					config[prop] = config[prop] || defaultConfig[prop];
-				};
-			};
 
-			if(config.messageKey) {
-				config.message = $translate.instant(config.messageKey);
-			}
+          function populateConfiguration(inputConfig){
+            var defaultConfig, outputConfig = {};
 
-			if(config.messageKey && config.message) {
-				config.message = $translate.instant(config.messageKey);
-			}
+            // Configure toast
+            defaultConfig = {
+              label: "info",
+              position: "bottom",
+              duration: 2000
+            };
 
-			markup = "<toast message='{0}' label='{1}' position='{2}' duration='{3}'></toast>"
-			markup = markup
-				.replace("{0}", config.message)
-				.replace("{1}", "t6r-" + config.label)
-				.replace("{2}", "t6r-" + config.position)
-				.replace("{3}", config.duration);
+            Object.keys(config).forEach(function(key) {
+              outputConfig[key] = inputConfig[key] || defaultConfig[key];
+            });
 
-			// Create and append toast to body
-			$scope = $rootScope.$new();
-			$toaster = $compile(markup)($scope);
-			angular.element(document.body).append($toaster);
-		}
-	}]);
+            outputConfig.message = inputConfig.messageKey ? $translate.instant(inputConfig.messageKey) : inputConfig.message;
+
+            return outputConfig;
+          }
+        }
+      }
+    }
+]);

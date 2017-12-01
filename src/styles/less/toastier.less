@@ -3,147 +3,148 @@
 /*==============================
 
 /* Positioning */
-@toastOffset: 100px;
-@toastZIndex: 9999;
+@t6r-offset: 100px;
+@t6r-z-index: 9999;
 
 /* Padding */
-@toastPadding: 10px 15px;
+@t6r-padding: 10px 15px;
 
 /* Border radius */
-@toastBorderRadius: 30px;
+@t6r-border-radius: 30px;
 
 /* Text color */
-@toastTextColor: white;
+@t6r-text-color: white;
+
+/* Text shadow base */
+@t6r-text-shadow-base: #000000;
 
 /* Font size */
-@toastFontSize: 16px;
+@t6r-font-size: 16px;
 
 /* Text shadow */
-@toastTextShadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+@t6r-text-shadow: 0 1px 1px fadeout(@t6r-text-shadow-base, 75%);
 
 /* Labelling colours */
-@info: #0E3A90;
-@success: #00857C;
-@warning: #D88D00;
-@alert: #D5000B;
+@t6r-info: #0E3A90;
+@t6r-success: #00857C;
+@t6r-warning: #D88D00;
+@t6r-alert: #D5000B;
 
 /* Toasts background colour */
-@toastInfoBgColor: linear-gradient(90deg, @info 0%, lighten(@info, 15%) 100%);
-@toastSuccessBgColor: linear-gradient(90deg, @success 0%, lighten(@success, 10%) 100%);
-@toastWarningBgColor: linear-gradient(90deg, @warning 0%, lighten(@warning, 10%) 100%);
-@toastAlertBgColor: linear-gradient(90deg, @alert 0%, lighten(@alert, 10%) 100%);
-
+@t6r-info-bg-color: linear-gradient(90deg, @t6r-info 0%, lighten(@t6r-info, 15%) 100%);
+@t6r-success-bg-color: linear-gradient(90deg, @t6r-success 0%, lighten(@t6r-success, 10%) 100%);
+@t6r-warning-bg-color: linear-gradient(90deg, @t6r-warning 0%, lighten(@t6r-warning, 10%) 100%);
+@t6r-alert-bg-color: linear-gradient(90deg, @t6r-alert 0%, lighten(@t6r-alert, 10%) 100%);
 
 /*==============================
 /* Styles Definition
 /*==============================
 
-/* Common definitions */
-.t6r {
-	position: absolute;
-	z-index: @toastZIndex;
-	padding: @toastPadding;
-	border-radius: @toastBorderRadius;
-	font-size: @toastFontSize;
-	color: @toastTextColor;
-	text-shadow: @toastTextShadow;
-	cursor: default;
-}
-
 /* Offsets */
 .xCentered() {
-	left: 50%;
-	transform: translateX(-50%);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .yCentered() {
-	top: 50%;
-	transform: translateY(-50%);
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.t6r-top {
-	top: @toastOffset;
-	.xCentered;
+.t6r {
+	position: absolute;
+	z-index: @t6r-z-index;
+	padding: @t6r-padding;
+	border-radius: @t6r-border-radius;
+	font-size: @t6r-font-size;
+	color: @t6r-text-color;
+	text-shadow: @t6r-text-shadow;
+	cursor: default;
+
+  &.t6r-top {
+    top: @t6r-offset;
+    .xCentered;
+  }
+
+  &.t6r-right {
+    right: @t6r-offset;
+    .yCentered;
+  }
+
+  &.t6r-bottom {
+    bottom: @t6r-offset;
+    .xCentered;
+  }
+
+  &.t6r-left {
+    left: @t6r-offset;
+    .yCentered;
+  }
+
+  &.t6r-top-left {
+    top: @t6r-offset;
+    left: @t6r-offset;
+  }
+
+  &.t6r-top-right {
+    top: @t6r-offset;
+    right: @t6r-offset;
+  }
+
+  &.t6r-bottom-left {
+    bottom: @t6r-offset;
+    left: @t6r-offset;
+  }
+
+  &.t6r-bottom-right {
+    bottom: @t6r-offset;
+    right: @t6r-offset;
+  }
+
+  /* Labelling */
+  &.t6r-info { background: @t6r-info-bg-color; }
+  &.t6r-success { background: @t6r-success-bg-color; }
+  &.t6r-warning { background: @t6r-warning-bg-color; }
+  &.t6r-alert {background: @t6r-alert-bg-color; }
+
+  /* Animation */
+  &.t6r-fade-in {
+    animation: fade-in 0.5s forwards;
+  }
+
+  &.t6r-fade-out {
+    animation: fade-out 0.2s forwards;
+  }
+
+  &.t6r-from-top {
+    animation:
+      fade-in 0.5s forwards,
+      from-top 0.5s forwards;
+  }
+
+  &.t6r-from-bottom {
+    animation:
+      fade-in 0.5s forwards,
+      from-bottom 0.5s forwards;
+  }
 }
 
-.t6r-right {
-	right: @toastOffset;
-	.yCentered;
-}
-
-.t6r-bottom {
-	bottom: @toastOffset;
-	.xCentered;
-}
-
-.t6r-left {
-	left: @toastOffset;
-	.yCentered;
-}
-
-.t6r-topLeft {
-	top: @toastOffset;
-	left: @toastOffset;
-}
-
-.t6r-topRight {
-	top: @toastOffset;
-	right: @toastOffset;
-}
-
-.t6r-bottomLeft {
-	bottom: @toastOffset;
-	left: @toastOffset;
-}
-
-.t6r-bottomRight {
-	bottom: @toastOffset;
-	right: @toastOffset;
-}
-
-/* Labelling */
-.t6r-info { background: @toastInfoBgColor; }
-.t6r-success { background: @toastSuccessBgColor; }
-.t6r-warning { background: @toastWarningBgColor; }
-.t6r-alert {background: @toastAlertBgColor; }
-
-/* Animation */
-.t6r-fadeIn {
-	animation: fadeIn 0.5s forwards;
-}
-
-.t6r-fadeOut {
-	animation: fadeOut 0.2s forwards;
-}
-
-.t6r-fromTop {
-	animation:
-		fadeIn 0.5s forwards,
-		fromTop 0.5s forwards;
-}
-
-.t6r-fromBottom {
-	animation:
-		fadeIn 0.5s forwards,
-		fromBottom 0.5s forwards;
-}
-
-@keyframes fromBottom {
+@keyframes from-bottom {
 	0% { margin-bottom: 0; }
-	100% { margin-bottom: @toastOffset; }
+	100% { margin-bottom: @t6r-offset; }
 }
 
-@keyframes fromTop {
+@keyframes from-top {
 	0% { margin-top: 0; }
-	100% { margin-top: @toastOffset; }
+	100% { margin-top: @t6r-offset; }
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
 	0% { opacity: 0; }
 	100% { opacity: 1; }
 }
 
-@keyframes fadeOut {
+@keyframes fade-out {
 	0% { opacity: 1; }
 	100% { opacity: 0 }
 }

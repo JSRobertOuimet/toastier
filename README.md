@@ -31,7 +31,7 @@ angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
     $toastier.show({
       message: "My toast message.",
       label: "warning",
-      position: "bottomRight",
+      position: "bottom-right",
       duration: 3000
     });
   };
@@ -76,7 +76,7 @@ Toastier accepts four `label` values:
 - `"warning"`
 - `"alert"`
 
-Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the pre-defined SASS variables: `$info`, `$success`, `$warning` and `$alert`.
+Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the pre-defined SASS variables: `$toast-info`, `$toast-success`, `$toast-warning` and `$toast-alert`.
 
 `position` [optional]  
 Type: String  
@@ -84,15 +84,15 @@ Default: `"bottom"`
 
 Toastier accepts eight `position` values:
 - `"top"`
-- `"topRight"`
+- `"top-right"`
 - `"right"`
-- `"bottomRight"`
+- `"bottom-right"`
 - `"bottom"`
-- `"bottomLeft"`
+- `"bottom-left"`
 - `"left"`
-- `"topLeft"`
+- `"top-left"`
 
-These values take into account the SASS variable `$toastOffset`, which sets a "buffer" from the edge of the window. Feel free to override it.
+These values take into account the SASS variable `$toast-offset`, which sets a "buffer" from the edge of the window. Feel free to override it.
 
 `duration` [optional]  
 Type: Number  
@@ -103,3 +103,7 @@ Default: `2000` (milliseconds)
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Acknowlegment
+
+Thanks to (cappadeini)[https://github.com/cappadeini] for his help!
