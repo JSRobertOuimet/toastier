@@ -106,4 +106,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowlegment
 
-Thanks to (cappadeini)[https://github.com/cappadeini] for his help!
+Thanks to [cappadeini](https://github.com/cappadeini) for his help!
