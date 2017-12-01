@@ -1,6 +1,6 @@
 {
   "name": "toastier",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "AngularJS service for building configurable toast notifications.",
   "main": "index.js",
   "repository": {
