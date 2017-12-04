@@ -1,4 +1,4 @@
-angular.module("toastier", ["ngAnimate", "pascalprecht.translate"]);
+angular.module("toastier", ["pascalprecht.translate"]);
 
 angular.module("toastier")
   .directive("toast", ["$timeout",
@@ -16,7 +16,6 @@ angular.module("toastier")
         compile: function(tElement, tAttrs) {
           return {
             pre: function(scope, iElement, iAttrs) {
-              var fadeInDuration = 500;
 
               scope.message = iAttrs.message;
               scope.label = iAttrs.label;
@@ -24,17 +23,17 @@ angular.module("toastier")
               scope.duration = iAttrs.duration;
 
               angular.element(document.body).append(iElement);
-              $(iElement).fadeIn(fadeInDuration);
             },
             post: function(scope, iElement, iAttrs) {
-              var fadeOutDuration, toastDuration;
+              var toastDuration;
 
-              fadeOutDuration = 200;
               toastDuration = parseInt(scope.duration);
-
               $timeout(fadeOutAndDestroy, toastDuration);
 
               function fadeOutAndDestroy() {
+                var fadeOutDuration;
+                
+                fadeOutDuration = 1000;
                 $(iElement).fadeOut(fadeOutDuration, destroy);
 
                 function destroy() {
