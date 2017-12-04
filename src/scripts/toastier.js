@@ -1,7 +1,7 @@
-angular.module("toastier", ["pascalprecht.translate"]);
+angular.module("toastier", ["ngAnimate", "pascalprecht.translate"]);
 
 angular.module("toastier")
-  .directive("toast", ["$timeout", 
+  .directive("toast", ["$timeout",
     function($timeout) {
       return {
         restrict: "E",
@@ -16,30 +16,30 @@ angular.module("toastier")
         compile: function(tElement, tAttrs) {
           return {
             pre: function(scope, iElement, iAttrs) {
+              var fadeInDuration = 500;
+
               scope.message = iAttrs.message;
               scope.label = iAttrs.label;
               scope.position = iAttrs.position;
               scope.duration = iAttrs.duration;
 
               angular.element(document.body).append(iElement);
+              $(iElement).fadeIn(fadeInDuration);
             },
             post: function(scope, iElement, iAttrs) {
-              var fadeOut, duration;
+              var fadeOutDuration, toastDuration;
 
-              // Fade out and destroy toast
+              fadeOutDuration = 200;
               toastDuration = parseInt(scope.duration);
-              fadeOut, duration = 500;
 
-              $timeout(fadeOut, toastDuration).then(function() {
-                return $timeout(destroy, fadeOut, duration);
-              });
+              $timeout(fadeOutAndDestroy, toastDuration);
 
-              function fadeOut() {
-                iElement.addClass("t6r-fade-out");
-              }
+              function fadeOutAndDestroy() {
+                $(iElement).fadeOut(fadeOutDuration, destroy);
 
-              function destroy() {
-                iElement.remove();
+                function destroy() {
+                  iElement.remove();
+                }
               }
             }
           };

@@ -18,17 +18,17 @@ To use Toastier, simply add it as a dependency to your application:
 angular.module("app", ["toastier"]);
 ```
 
-Then, inject the `$toastier` service to any controller that requires a toast notification. The `show` method accept a `config` object in which you can define your toast `message`, `label`, `position` and `duration`.
+Then, inject the `$t6rier` service to any controller that requires a toast notification. The `show` method accept a `config` object in which you can define your toast `message`, `label`, `position` and `duration`.
 
-### $toastier.show(config)
+### $t6rier.show(config)
 
 `config` is a mandatory object that accepts four parameters:
 
 ```javascript
-angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
+angular.module("mainCtrl", ["$scope", "$t6rier", function($scope, $t6rier) {
   $scope.action = function() {
     // action to be performed...
-    $toastier.show({
+    $t6rier.show({
       message: "My toast message.",
       label: "warning",
       position: "bottom-right",
@@ -41,13 +41,13 @@ angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
 `message` / `messageKey` [mandatory]  
 Type: String
 
-If you define both `message` and `messageKey`, only `messageKey` will be considered.
+`message` is the message to display.
 
 ```javascript
-angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
+angular.module("mainCtrl", ["$scope", "$t6rier", function($scope, $t6rier) {
   $scope.action = function() {
     // action to be performed...
-    $toastier.show({
+    $t6rier.show({
       message: "My toast message."
     });
   };
@@ -57,14 +57,16 @@ angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
 Toastier also supports Pascal Precht&#8217;s <a href="https://angular-translate.github.io/" target="_blank">angular-translate</a>, so you can define a `messageKey` instead:
 
 ```javascript
-angular.module("mainCtrl", ["$scope", "$toastier", function($scope, $toastier) {
+angular.module("mainCtrl", ["$scope", "$t6rier", function($scope, $t6rier) {
   $scope.action = function() {
-    $toastier.show({
+    $t6rier.show({
       messageKey: "My_Localized_String"
     });
   };
 }]);
 ```
+
+If you define both `message` and `messageKey`, only `messageKey` will be considered.
 
 `label` [optional]  
 Type: String  
@@ -76,7 +78,7 @@ Toastier accepts four `label` values:
 - `"warning"`
 - `"alert"`
 
-Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the pre-defined SASS variables: `$toast-info`, `$toast-success`, `$toast-warning` and `$toast-alert`.
+Each one maps to a CSS class that sets a background color for the toast. You can customize them by overriding the pre-defined SASS variables: `$t6r-info`, `$t6r-success`, `$t6r-warning` and `$t6r-alert`.
 
 `position` [optional]  
 Type: String  
@@ -92,7 +94,7 @@ Toastier accepts eight `position` values:
 - `"left"`
 - `"top-left"`
 
-These values take into account the SASS variable `$toast-offset`, which sets a "buffer" from the edge of the window. Feel free to override it.
+These values take into account the SASS variable `$t6r-offset`, which sets a "buffer" from the edge of the window. Feel free to override it.
 
 `duration` [optional]  
 Type: Number  

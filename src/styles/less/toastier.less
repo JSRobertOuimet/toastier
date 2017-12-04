@@ -109,42 +109,5 @@
 
   /* Animation */
   &.t6r-fade-in {
-    animation: fade-in 0.5s forwards;
+    animation: fade-in 0.5s;
   }
-
-  &.t6r-fade-out {
-    animation: fade-out 0.2s forwards;
-  }
-
-  &.t6r-from-top {
-    animation:
-      fade-in 0.5s forwards,
-      from-top 0.5s forwards;
-  }
-
-  &.t6r-from-bottom {
-    animation:
-      fade-in 0.5s forwards,
-      from-bottom 0.5s forwards;
-  }
-}
-
-@keyframes from-bottom {
-	0% { margin-bottom: 0; }
-	100% { margin-bottom: @t6r-offset; }
-}
-
-@keyframes from-top {
-	0% { margin-top: 0; }
-	100% { margin-top: @t6r-offset; }
-}
-
-@keyframes fade-in {
-	0% { opacity: 0; }
-	100% { opacity: 1; }
-}
-
-@keyframes fade-out {
-	0% { opacity: 1; }
-	100% { opacity: 0 }
-}

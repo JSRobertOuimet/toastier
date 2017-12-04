@@ -5,7 +5,7 @@ angular.module("app")
 				message: "This is an info message.",
 				label: "info",
 				position: "top",
-				duration: 3000
+				duration: 2000
 			});
 		};
 	}]);
