@@ -3,8 +3,8 @@ angular.module("app")
 		$scope.action = function() {
 			$toastier.show({
 				message: "This is an info message.",
-				label: "info",
-				position: "top",
+				label: "alert",
+				position: "bottom-left",
 				duration: 2000
 			});
 		};
