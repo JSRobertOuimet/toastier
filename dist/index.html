@@ -1,19 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="demo">
 <head>
   <meta charset="UTF-8">
-  <title>Toastier</title>
-  <link rel="stylesheet" href="styles/app.css">
+  <title>Toastier Demo</title>
+
+  <link rel="stylesheet" href="styles/demo.css">
   <link rel="stylesheet" href="styles/toastier.css">
 </head>
-<body id="body" ng-controller="mainCtrl">
-  <button class="btn" ng-click="action()">My Action</button>
+<body id="body" ng-controller="demoController as vm">
+  <button class="btn" ng-click="vm.action()">My Action</button>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-translate/2.16.0/angular-translate.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-  <script src="scripts/toastier.js"></script>
-  <script src="app.js"></script>
-  <script src="mainCtrl.js"></script>
+  
+  <!-- Bootstrapping -->
+  <script src="scripts/demo.module.js"></script>
+
+  <!-- Demo controller -->
+  <script src="scripts/demo.controller.js"></script>
+
+  <!-- Toastier -->
+  <script src="scripts/toastier/toastier.service.js"></script>
+  <script src="scripts/toastier/toastier.directive.js"></script>
 </body>
 </html>

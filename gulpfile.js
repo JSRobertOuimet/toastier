@@ -5,7 +5,7 @@ var
 	gulpIf			= require("gulp-if"),
 	runSequence	= require("run-sequence"),
 	sass 				= require("gulp-sass"),
-	uglify			= require("gulp-uglify"),
+  uglify      = require("gulp-uglify"),
 	useref			= require("gulp-useref");
 
 //==============================
@@ -47,20 +47,17 @@ gulp.task("sass-prod", function() {
 		.pipe(gulp.dest("dist/styles"))
 });
 
-// How to output minified and unminified file to dist folder?
 gulp.task("useref", function() {
 	return gulp.src("src/index.html")
-		.pipe(useref({
-			noconcat: true
-		}))
-		// .pipe(gulpIf("*.js", uglify()))
+		.pipe(useref({ noconcat: true }))
+    // .pipe(gulpIf("*.js", uglify()))
 		.pipe(gulp.dest("dist"))
 });
 
-gulp.task("copyDemoFiles", function() {
-  return gulp.src("src/*.js")
-    .pipe(gulp.dest("dist"))
-});
+// gulp.task("copyDemoFiles", function() {
+//   return gulp.src("src/*.js")
+//     .pipe(gulp.dest("dist"))
+// });
 
 //==============================
 // Global tasks
@@ -70,5 +67,5 @@ gulp.task("serve", function(cb) {
 });
 
 gulp.task("build", function(cb) {
-	runSequence("clean:dist", ["sass-prod", "useref", "copyDemoFiles"], cb)
+	runSequence("clean:dist", ["sass-prod", "useref"], cb)
 });
