@@ -6,9 +6,7 @@ var
 	runSequence	= require("run-sequence"),
 	sass 				= require("gulp-sass"),
   uglify      = require("gulp-uglify"),
-	useref			= require("gulp-useref"),
-
-  sourceFiles = []
+	useref			= require("gulp-useref");
 
 //==============================
 // Development tasks
