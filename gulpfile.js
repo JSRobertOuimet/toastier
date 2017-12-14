@@ -50,7 +50,7 @@ gulp.task("sass-prod", function() {
 gulp.task("useref", function() {
 	return gulp.src("src/index.html")
 		.pipe(useref({ noconcat: false }))
-    .pipe(gulpIf("*.js", uglify()))
+    // .pipe(gulpIf("*.js", uglify()))
 		.pipe(gulp.dest("dist"))
 });
 
