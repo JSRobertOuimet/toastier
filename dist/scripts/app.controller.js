@@ -2,10 +2,10 @@
   "use strict";
 
   angular
-    .module("demo")
-    .controller("demoController", mainController);
+    .module("app")
+    .controller("appController", appController);
 
-  function mainController(toastierService) {
+  function appController(toastierService) {
     var vm = this;
 
     vm.action = action;

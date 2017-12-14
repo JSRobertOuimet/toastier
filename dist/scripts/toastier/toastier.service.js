@@ -2,7 +2,7 @@
   "use strict";
 
   angular
-    .module("demo")
+    .module("app")
     .factory("toastierService", toastierService);
 
   function toastierService($compile, $rootScope, $translate) {
