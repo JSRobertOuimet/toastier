@@ -1,5 +1,5 @@
 (function() {
   "use strict";
 
-  angular.module("app", ["toastier"]);
+  angular.module("app", ["toastier", "pascalprecht.translate"]);
 })();
