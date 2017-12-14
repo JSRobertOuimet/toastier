@@ -2,7 +2,7 @@
   "use strict";
 
   angular
-    .module("toastier", ["pascalprecht.translate"])
+    .module("toastier")
     .directive("toast", toast);
 
   function toast($timeout) {

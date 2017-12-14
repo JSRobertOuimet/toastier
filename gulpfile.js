@@ -6,7 +6,9 @@ var
 	runSequence	= require("run-sequence"),
 	sass 				= require("gulp-sass"),
   uglify      = require("gulp-uglify"),
-	useref			= require("gulp-useref");
+	useref			= require("gulp-useref"),
+
+  sourceFiles = []
 
 //==============================
 // Development tasks
@@ -54,10 +56,10 @@ gulp.task("useref", function() {
 		.pipe(gulp.dest("dist"))
 });
 
-// gulp.task("copyDemoFiles", function() {
-//   return gulp.src("src/*.js")
-//     .pipe(gulp.dest("dist"))
-// });
+gulp.task("copyDemoFiles", function() {
+  return gulp.src("src/scripts/*.js")
+    .pipe(gulp.dest("dist/scripts"))
+});
 
 //==============================
 // Global tasks
@@ -67,5 +69,5 @@ gulp.task("serve", function(cb) {
 });
 
 gulp.task("build", function(cb) {
-	runSequence("clean:dist", ["sass-prod", "useref"], cb)
+	runSequence("clean:dist", ["sass-prod", "useref", "copyDemoFiles"], cb)
 });
