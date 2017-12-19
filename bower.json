@@ -1,0 +1,22 @@
+{
+  "name": "toastier",
+  "description": "AngularJS service for building configurable toast notifications.",
+  "main": "index.js",
+  "authors": [
+    "Jean-Simon Robert Ouimet"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angularjs",
+    "toast",
+    "notification"
+  ],
+  "homepage": "https://github.com/JSRobertOuimet/toastier",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
