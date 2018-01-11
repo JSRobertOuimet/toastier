@@ -61,10 +61,10 @@
           defaultConfig = {
             label: "info",
             position: "bottom",
-            duration: 2000
+            duration: 3000
           };
 
-          Object.keys(config).forEach(function(key) {
+          Object.keys(defaultConfig).forEach(function(key) {
             outputConfig[key] = inputConfig[key] || defaultConfig[key];
           });
 

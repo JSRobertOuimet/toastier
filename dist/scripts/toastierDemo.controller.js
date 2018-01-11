@@ -14,8 +14,8 @@
       toastierService.show({
         message: "This is an info message.",
         label: "info",
-        position: "bottom-right",
-        duration: 2000
+        position: "top-right",
+        duration: 3000
       });
     }
   }
